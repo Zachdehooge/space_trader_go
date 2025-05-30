@@ -1,4 +1,3 @@
-![Cover Image](assets/cover.png)
 # 🚀 Space Trader API 🛠️ [WIP]
 [![Build Status](https://www.travis-ci.com/HOWZ1T/space_trader.svg?branch=master)](https://www.travis-ci.com/HOWZ1T/space_trader)
 [![codecov](https://codecov.io/gh/HOWZ1T/space_trader/branch/master/graph/badge.svg?token=4L7QO7TFDX)](https://codecov.io/gh/HOWZ1T/space_trader)
