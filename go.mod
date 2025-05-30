@@ -1,4 +1,4 @@
-module github.com/HOWZ1T/space_trader
+module github.com/Zachdehooge/space_trader_go
 
 go 1.15
 
