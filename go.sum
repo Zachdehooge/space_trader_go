@@ -1,3 +1,5 @@
+github.com/HOWZ1T/space_trader v0.1.3 h1:ZUW4HTF3DBD96ro6OlQU0CUchQ0NfzNKcAXkK8JMXwo=
+github.com/HOWZ1T/space_trader v0.1.3/go.mod h1:2b2VHZG1i+Fk1d/q693dhToCUpcXpI3YDCOJlBeunXI=
 github.com/google/uuid v1.2.0 h1:qJYtXnJRWmpe7m/3XlyhrsLrEURqHRM2kxzoxXqyUDs=
 github.com/google/uuid v1.2.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
