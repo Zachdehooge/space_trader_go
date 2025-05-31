@@ -98,7 +98,7 @@ func TestApiStatus(t *testing.T) {
 	stat, err := stTest.ApiStatus()
 	(*assert.T)(t).Nil(err)
 
-	expected := "spacetraders is currently online and available to play"
+	expected := "SpaceTraders is currently online and available to play"
 	(*assert.T)(t).Equals(expected, stat)
 }
 
