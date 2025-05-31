@@ -12,36 +12,44 @@ import (
 	"github.com/HOWZ1T/space_trader/events"
 	"github.com/HOWZ1T/space_trader/models"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 	"sync"
 	"time"
 )
 
-// These constants represents the various api endpoints.
+type BaseURL struct {
+	Status string `json:"status"`
+}
+
+// These constants represent the various api endpoints.
 const (
 	// base endpoint
 	base = "https://api.spacetraders.io/"
 
-	// game endpoint
+	// game endpoint -
+	//! Not Found
 	game = base + "game/"
 
-	// status endpoint
-	status = game + "status"
-
 	// users endpoint
+	//! Not Found, but accounts is in the base JSON response
 	users = base + "users/"
 
 	// loans endpoint
+	//! Not Found
 	loans = game + "loans"
 
 	// ships endpoint
+	//! Not Found, but is in the base JSON response
 	ships = game + "ships"
 
 	// systems endpoint
+	//! Not Found, but is in the base JSON response
 	systems = game + "systems/"
 
 	// locations endpoint
+	//! Not Found
 	locations = game + "locations/"
 )
 
@@ -221,14 +229,18 @@ func (st *SpaceTrader) EventsChannel() chan events.Event {
 	return st.eventManager.EventChannel
 }
 
-// Retrieves the status of the api.
+// Retrieves the status of the API
 func (st *SpaceTrader) ApiStatus() (string, error) {
-	var stat map[string]string
-
-	err := st.doShaped("GET", status, "", nil, nil, &stat)
+	resp, err := http.Get(base)
 	if err != nil {
-		return "", err
+		log.Fatalf("Status request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	var data BaseURL
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		log.Fatalf("Status decode failed: %v", err)
 	}
 
-	return stat["status"], nil
+	return data.Status, nil
 }
