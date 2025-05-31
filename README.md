@@ -24,21 +24,6 @@ The methods in this wrapper return the relevant model.
 ## 📔 Examples
 - 🎓 [Quick Start](examples/QUICKSTART.md)
 
-## 💻 Contribution
-This project is open to contributions.
-
-To contribute follow the standard go style as much as possible and try to achieve an 80% code coverage or higher, with unit tests for the code submitted / changed.
-
-Contributors will be acknowledge in this readme.
-
-## ❤️ Contributors
-- [HOWZ1T](https://github.com/HOWZ1T/) - Project Author & Maintainer
-- [Trescenzi](https://github.com/trescenzi) - Added Functionality & Fixed Documentation Typo
-- [njfox](https://github.com/njfox) - Various fixes & tweaks
-
-## ⚖️ License
-This project is licensed under [GNU General Public License v3.0](LICENSE).
-
 ## 📝 TODO
 - [ ] More Examples
   - [x] Quick Start
