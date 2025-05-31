@@ -22,6 +22,11 @@ import (
 type BaseURL struct {
 	Status    string `json:"status"`
 	ResetDate string `json:"resetDate"`
+
+	Server struct {
+		ServerResets string `json:"next"`
+		ServerFreq   string `json:"frequency"`
+	} `json:"serverResets"`
 }
 
 // These constants represent the various api endpoints.
@@ -246,7 +251,7 @@ func (st *SpaceTrader) ApiStatus() (string, error) {
 	return data.Status, nil
 }
 
-func (st *SpaceTrader) ResetDate() (string, error) {
+func (st *SpaceTrader) LastDate() (string, error) {
 	resp, err := http.Get(base)
 	if err != nil {
 		log.Fatalf("Status request failed: %v", err)
@@ -259,4 +264,34 @@ func (st *SpaceTrader) ResetDate() (string, error) {
 	}
 
 	return data.Status, nil
+}
+
+func (st *SpaceTrader) NextReset() (string, error) {
+	resp, err := http.Get(base)
+	if err != nil {
+		log.Fatalf("Status request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	var data BaseURL
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		log.Fatalf("Status decode failed: %v", err)
+	}
+
+	return data.Server.ServerResets, nil
+}
+
+func (st *SpaceTrader) ResetFreq() (string, error) {
+	resp, err := http.Get(base)
+	if err != nil {
+		log.Fatalf("Status request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	var data BaseURL
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		log.Fatalf("Status decode failed: %v", err)
+	}
+
+	return data.Server.ServerFreq, nil
 }
