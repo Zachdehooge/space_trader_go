@@ -20,7 +20,8 @@ import (
 )
 
 type BaseURL struct {
-	Status string `json:"status"`
+	Status    string `json:"status"`
+	ResetDate string `json:"resetDate"`
 }
 
 // These constants represent the various api endpoints.
@@ -231,6 +232,21 @@ func (st *SpaceTrader) EventsChannel() chan events.Event {
 
 // Retrieves the status of the API
 func (st *SpaceTrader) ApiStatus() (string, error) {
+	resp, err := http.Get(base)
+	if err != nil {
+		log.Fatalf("Status request failed: %v", err)
+	}
+	defer resp.Body.Close()
+
+	var data BaseURL
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
+		log.Fatalf("Status decode failed: %v", err)
+	}
+
+	return data.Status, nil
+}
+
+func (st *SpaceTrader) ResetDate() (string, error) {
 	resp, err := http.Get(base)
 	if err != nil {
 		log.Fatalf("Status request failed: %v", err)
