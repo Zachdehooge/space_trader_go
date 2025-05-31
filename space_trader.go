@@ -263,7 +263,7 @@ func (st *SpaceTrader) LastDate() (string, error) {
 		log.Fatalf("Status decode failed: %v", err)
 	}
 
-	return data.Status, nil
+	return data.ResetDate, nil
 }
 
 func (st *SpaceTrader) NextReset() (string, error) {
