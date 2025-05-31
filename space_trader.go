@@ -258,5 +258,5 @@ func (st *SpaceTrader) ResetDate() (string, error) {
 		log.Fatalf("Status decode failed: %v", err)
 	}
 
-	return data.Status, nil
+	return data.ResetDate, nil
 }
